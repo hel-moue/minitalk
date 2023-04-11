@@ -6,7 +6,7 @@
 /*   By: hel-moue <hel-moue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 02:01:44 by hel-moue          #+#    #+#             */
-/*   Updated: 2023/04/11 22:36:19 by hel-moue         ###   ########.fr       */
+/*   Updated: 2023/04/11 22:51:24 by hel-moue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,13 @@ int	main(int argc, char **argv)
 
 	(void)argv;
 	if (argc != 1)
-	{
-		write(1, "Error\n", 6);
-		return (0);
-	}
+		return (write(1, "Error.arg\n", 10));
 	ft_putnbr(getpid());
+	write(1, "\n", 1);
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = &secend;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	write(1, "\n", 1);
 	while (1)
 		pause ();
 	return (0);
